@@ -1,5 +1,5 @@
 # 🎓 India College Finder
-### Full Stack Web Application — Internship Project 2026
+### Full Stack Web Application
 
 > **Solving the unavailability of an efficient and user-friendly online platform for prospective students to search and discover colleges in India.**
 
