@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>College Detail — India College Finder</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/detail.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a class="navbar-brand" href="../index.html">
+      <div class="brand-logo">🎓</div>
+      <div>
+        <div class="brand-text">India College <span>Finder</span></div>
+        <div class="brand-sub">Discover · Explore · Connect</div>
+      </div>
+    </a>
+    <ul class="navbar-links" id="navLinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../index.html#search-section">Search</a></li>
+      <li><a href="../index.html#states-section">States</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="../index.html">🏠 Home</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="../index.html#search-section">Colleges</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="#" id="bcState" class="active"></a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current" id="bcCollegeName">Loading...</span>
+  </div>
+</div>
+
+<div id="detailSkeleton">
+  <div class="detail-hero">
+    <div class="detail-hero-inner">
+      <div class="detail-hero-top">
+        <div style="flex:1;">
+          <div class="skeleton" style="height:24px;width:120px;border-radius:99px;margin-bottom:20px;opacity:0.3;"></div>
+          <div class="skeleton" style="height:40px;width:70%;margin-bottom:12px;opacity:0.3;"></div>
+          <div class="skeleton" style="height:40px;width:50%;margin-bottom:24px;opacity:0.3;"></div>
+          <div style="display:flex;gap:20px;">
+            <div class="skeleton" style="height:20px;width:100px;opacity:0.3;"></div>
+            <div class="skeleton" style="height:20px;width:120px;opacity:0.3;"></div>
+            <div class="skeleton" style="height:20px;width:80px;opacity:0.3;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="detailContent" style="display:none;">
+
+  <section class="detail-hero">
+    <div class="detail-hero-inner">
+      <div class="detail-hero-top">
+        <div>
+          <div class="detail-college-badge" id="detailStateBadge">
+            🏫 State
+          </div>
+          <h1 class="detail-college-name" id="detailCollegeName">College Name</h1>
+          <div class="detail-meta">
+            <div class="detail-meta-item">
+              <span class="meta-icon">📍</span>
+              <span id="detailCity">City</span>, <span id="detailState">State</span>
+            </div>
+            <div class="detail-meta-item">
+              <span class="meta-icon">🎓</span>
+              <span id="detailAffiliation">Affiliation</span>
+            </div>
+            <div class="detail-meta-item">
+              <span class="meta-icon">📅</span>
+              Est. <span id="detailYear">Year</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-actions">
+          <a class="btn-visit-website" id="btnWebsite" href="#" target="_blank">
+            🌐 Visit Website
+          </a>
+          <button class="btn-back" onclick="window.history.back()">
+            ← Back to Results
+          </button>
+        </div>
+      </div>
+
+      <div class="detail-hero-strip">
+        <div class="detail-strip-item">
+          <div class="detail-strip-label">City</div>
+          <div class="detail-strip-value" id="stripCity">—</div>
+        </div>
+        <div class="detail-strip-item">
+          <div class="detail-strip-label">State</div>
+          <div class="detail-strip-value" id="stripState">—</div>
+        </div>
+        <div class="detail-strip-item">
+          <div class="detail-strip-label">Est.</div>
+          <div class="detail-strip-value" id="stripYear">—</div>
+        </div>
+        <div class="detail-strip-item">
+          <div class="detail-strip-label">Type</div>
+          <div class="detail-strip-value">College</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="hero-deco-bl"></div>
+  </section>
+
+  <div class="detail-body">
+
+    <div class="detail-main">
+
+      <div class="detail-card">
+        <div class="detail-card-header">
+          <div class="detail-card-icon">📚</div>
+          <div class="detail-card-title">Courses Offered</div>
+        </div>
+        <div class="detail-card-body" id="coursesContainer">
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <div class="detail-card-header">
+          <div class="detail-card-icon">ℹ️</div>
+          <div class="detail-card-title">College Overview</div>
+        </div>
+        <div class="detail-card-body" style="padding:0;">
+          <div class="overview-grid">
+            <div class="overview-cell">
+              <div class="overview-cell-label">College Name</div>
+              <div class="overview-cell-value" id="overviewName">—</div>
+            </div>
+            <div class="overview-cell">
+              <div class="overview-cell-label">Location</div>
+              <div class="overview-cell-value" id="overviewLocation">—</div>
+            </div>
+            <div class="overview-cell">
+              <div class="overview-cell-label">Affiliation</div>
+              <div class="overview-cell-value" id="overviewAffiliation">—</div>
+            </div>
+            <div class="overview-cell">
+              <div class="overview-cell-label">Established</div>
+              <div class="overview-cell-value" id="overviewYear">—</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="detail-sidebar">
+      <div class="contact-card">
+        <div class="contact-card-header">
+          <span class="contact-card-header-icon">📞</span>
+          <div class="contact-card-title">Contact Information</div>
+        </div>
+        <div class="contact-card-body">
+         
+          <div class="contact-item">
+            <div class="contact-item-icon">📱</div>
+            <div>
+              <div class="contact-item-label">Phone</div>
+              <div class="contact-item-value" id="contactPhone">Not available</div>
+            </div>
+          </div>
+        
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div>
+              <div class="contact-item-label">Email</div>
+              <div class="contact-item-value" id="contactEmail">Not available</div>
+            </div>
+          </div>
+    
+          <div class="contact-item">
+            <div class="contact-item-icon">🌐</div>
+            <div>
+              <div class="contact-item-label">Website</div>
+              <div class="contact-item-value" id="contactWebsite">Not available</div>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-item-icon">🏢</div>
+            <div>
+              <div class="contact-item-label">Address</div>
+              <div class="contact-item-value" id="contactAddress">Not available</div>
+            </div>
+          </div>
+
+          <div class="contact-item" id="locationMapItem" style="display:none;">
+            <div class="contact-item-icon">📍</div>
+            <div style="flex:1;">
+              <div class="contact-item-label">Live Location</div>
+              <a class="contact-item-value" id="btnMapLink" href="#" target="_blank"
+                style="color:var(--accent);font-weight:600;font-size:0.85rem;display:flex;align-items:center;gap:6px;margin-top:2px;">
+                🗺️ Open in Google Maps →
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-cta-buttons">
+            <a class="btn-contact primary" id="btnEmail" href="#">
+              ✉️ Send Email
+            </a>
+            <a class="btn-contact outline" id="btnPhone" href="#">
+              📞 Call Now
+            </a>
+            <a class="btn-contact outline" id="btnMap" href="#" target="_blank"
+              style="display:none;border-color:var(--accent);color:var(--accent);">
+              📍 View on Map
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<section class="more-colleges-section" id="moreCollegesSection" style="display:none;">
+  <div class="more-colleges-inner">
+    <div class="section-header" style="text-align:left;margin-bottom:28px;">
+      <span class="section-tag">📍 Same State</span>
+      <h2 class="section-title" style="text-align:left;">More Colleges in This State</h2>
+    </div>
+    <div class="colleges-grid" id="moreCollegesGrid"></div>
+    <div style="text-align:center;margin-top:28px;">
+      <a href="../index.html#search-section" class="btn-main-search" style="display:inline-flex;text-decoration:none;background:var(--primary);">
+        🔍 Browse All Colleges
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid" style="grid-template-columns: 2fr 1fr 1fr 1fr;">
+      <div>
+        <div class="footer-brand-text">India College <span>Finder</span></div>
+        <p class="footer-desc">
+          Your one-stop platform to discover, explore, and compare colleges across all 28 states
+          and union territories of India. Find the right college for your future.
+        </p>
+        <div class="footer-badges">
+          <span class="footer-badge">&#127758; Pan-India</span>
+          <span class="footer-badge">&#127891; UG &amp; PG</span>
+          <span class="footer-badge">&#9989; Free to Use</span>
+        </div>
+      </div>
+    
+      <div>
+        <div class="footer-col-title">Navigate</div>
+        <ul class="footer-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../index.html#search-section">Search Colleges</a></li>
+          <li><a href="../index.html#states-section">Browse by State</a></li>
+          <li><a href="../index.html#about-section">About Platform</a></li>
+        </ul>
+      </div>
+    
+      <div>
+        <div class="footer-col-title">Top States</div>
+        <ul class="footer-links">
+          <li><a href="../index.html#search-section">Maharashtra</a></li>
+          <li><a href="../index.html#search-section">Delhi</a></li>
+          <li><a href="../index.html#search-section">Karnataka</a></li>
+          <li><a href="../index.html#search-section">Tamil Nadu</a></li>
+        </ul>
+      </div>
+    
+      <div>
+        <div class="footer-col-title">Popular Courses</div>
+        <ul class="footer-links">
+          <li><a href="../index.html#search-section">B.Tech / Engineering</a></li>
+          <li><a href="../index.html#search-section">MBBS / Medical</a></li>
+          <li><a href="../index.html#search-section">MBA / Management</a></li>
+          <li><a href="../index.html#search-section">Law / LLB</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        <span>&copy; 2026 India College Finder.</span>
+        <span class="footer-dot">&#183;</span>
+        <span>All rights reserved.</span>
+        <span class="footer-dot">&#183;</span>
+        <span>Built with dedication for students of India.</span>
+      </div>
+      <div class="footer-bottom-right">
+        Helping students find their dream college &mdash; across every state, every city.
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/detail.js"></script>
+<script>
+
+  const origRender = window.renderDetail;
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new MutationObserver(() => {
+      const name = document.getElementById('detailCollegeName')?.textContent;
+      const loc = [
+        document.getElementById('detailCity')?.textContent,
+        document.getElementById('detailState')?.textContent
+      ].filter(v => v && v !== 'N/A').join(', ');
+      const aff = document.getElementById('detailAffiliation')?.textContent;
+      const yr = document.getElementById('detailYear')?.textContent;
+      if (name && name !== 'College Name') {
+        const el = id => document.getElementById(id);
+        if (el('overviewName')) el('overviewName').textContent = name;
+        if (el('overviewLocation')) el('overviewLocation').textContent = loc || 'N/A';
+        if (el('overviewAffiliation')) el('overviewAffiliation').textContent = aff || 'Autonomous';
+        if (el('overviewYear')) el('overviewYear').textContent = yr || 'N/A';
+      }
+    });
+    const target = document.getElementById('detailCollegeName');
+    if (target) observer.observe(target, { childList: true, subtree: true, characterData: true });
+  });
+</script>
+</body>
+</html>

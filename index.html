@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>India College Finder — Discover Your Perfect College</title>
+  <meta name="description" content="Search and discover colleges across India. Find detailed information about courses, contact details, and more for colleges in all states." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
+</head>
+<body>
+
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="spinner"></div>
+</div>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <div class="navbar-brand">
+      <div class="brand-logo">🎓</div>
+      <div>
+        <div class="brand-text">India College <span>Finder</span></div>
+        <div class="brand-sub">Discover · Explore · Connect</div>
+      </div>
+    </div>
+
+    <ul class="navbar-links" id="navLinks">
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="#search-section">Search</a></li>
+      <li><a href="#states-section">States</a></li>
+      <li><a href="#about-section">About</a></li>
+    </ul>
+
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-glow-1"></div>
+  <div class="hero-glow-2"></div>
+
+  <div class="hero-inner">
+    <div class="hero-left">
+
+      <div class="hero-badge">
+        <span class="hero-badge-dot">&#9733;</span>
+        India&rsquo;s #1 College Discovery Platform
+      </div>
+
+      <h1 class="hero-title">
+        Find Your Perfect
+        <em>College in India</em>
+      </h1>
+
+      <p class="hero-desc">
+        Explore thousands of colleges across all 28 states and union territories.
+        Compare courses, view contact details, and make the right choice for your future.
+      </p>
+
+      <div class="hero-search-box">
+        <div class="hero-search-title">&#128269; Quick Search</div>
+        <div class="search-row">
+          <div class="search-input-wrap">
+            <span class="icon">&#127979;</span>
+            <input type="text" id="heroSearch" placeholder="College name or city..." />
+          </div>
+          <div class="search-input-wrap">
+            <span class="icon">&#128205;</span>
+            <select id="heroState">
+              <option value="all">All States &amp; UTs</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn-search-hero" id="btnHeroSearch">
+          &#128269;&nbsp; Search Colleges
+        </button>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num" id="statTotal">...</div>
+          <div class="hero-stat-label">Colleges</div>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <div class="hero-stat-num" id="statStates">...</div>
+          <div class="hero-stat-label">States &amp; UTs</div>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <div class="hero-stat-num" id="statCities">...</div>
+          <div class="hero-stat-label">Cities</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-img-panel">
+        <div class="hero-img-overlay"></div>
+        <div class="grad-scene">
+          <div class="grad-bg-art">
+            <div class="grad-cap cap-1">&#127891;</div>
+            <div class="grad-cap cap-2">&#127891;</div>
+            <div class="grad-cap cap-3">&#127891;</div>
+            <div class="grad-cap cap-4">&#127891;</div>
+            <div class="grad-cap cap-5">&#127891;</div>
+          </div>
+          <div class="grad-banner">
+            <div class="grad-banner-title">Congratulations!</div>
+            <div class="grad-banner-sub">Class of 2025 &mdash; Your Dream College Awaits</div>
+          </div>
+          <div class="grad-students">
+            <div class="grad-student"><div class="gs-gown"></div><div class="gs-head"></div><div class="gs-cap">&#127891;</div></div>
+            <div class="grad-student s2"><div class="gs-gown"></div><div class="gs-head"></div><div class="gs-cap">&#127891;</div></div>
+            <div class="grad-student s3 center"><div class="gs-gown"></div><div class="gs-head"></div><div class="gs-cap">&#127891;</div><div class="gs-scroll">&#128196;</div></div>
+            <div class="grad-student s2"><div class="gs-gown"></div><div class="gs-head"></div><div class="gs-cap">&#127891;</div></div>
+            <div class="grad-student"><div class="gs-gown"></div><div class="gs-head"></div><div class="gs-cap">&#127891;</div></div>
+          </div>
+          <div class="confetti-wrap">
+            <div class="conf c1"></div><div class="conf c2"></div><div class="conf c3"></div>
+            <div class="conf c4"></div><div class="conf c5"></div><div class="conf c6"></div>
+            <div class="conf c7"></div><div class="conf c8"></div>
+          </div>
+        </div>
+        <div class="hero-img-stats">
+          <div class="hero-img-stat">
+            <span class="hero-img-stat-num" id="statTotalPanel">...</span>
+            <span class="hero-img-stat-label">Colleges</span>
+          </div>
+          <div class="hero-img-stat-div"></div>
+          <div class="hero-img-stat">
+            <span class="hero-img-stat-num" id="statStatesPanel">...</span>
+            <span class="hero-img-stat-label">States</span>
+          </div>
+          <div class="hero-img-stat-div"></div>
+          <div class="hero-img-stat">
+            <span class="hero-img-stat-num" id="statCitiesPanel">...</span>
+            <span class="hero-img-stat-label">Cities</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stats-bar-inner">
+    <div class="stat-item">
+      <div class="stat-num" id="statTotal2">—</div>
+      <div class="stat-label">Total Colleges</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">34</div>
+      <div class="stat-label">States & UTs</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">UG + PG</div>
+      <div class="stat-label">Course Types</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">Free</div>
+      <div class="stat-label">Always Free</div>
+    </div>
+  </div>
+</div>
+
+<section class="search-section" id="search-section">
+  <div class="search-section-inner">
+    <div class="section-header" style="margin-bottom:28px;text-align:left;">
+      <span class="section-tag">🔍 Search</span>
+      <h2 class="section-title" style="text-align:left;">Find Colleges</h2>
+    </div>
+
+    <div class="main-search-bar">
+      <div class="search-field" style="flex:2.5;">
+        <span class="field-icon">&#128269;</span>
+        <input type="text" id="mainSearch" placeholder="Search by college name or city..." />
+      </div>
+      <div class="search-divider"></div>
+      <div class="search-field">
+        <span class="field-icon">&#128205;</span>
+        <select id="mainState" onchange="onStateChange(this.value)">
+          <option value="all">All States</option>
+        </select>
+      </div>
+      <div class="search-divider"></div>
+      <div class="search-field">
+        <span class="field-icon">&#127968;</span>
+        <select id="mainCity">
+          <option value="all">All Cities</option>
+        </select>
+      </div>
+      <div class="search-divider"></div>
+      <div class="search-field">
+        <span class="field-icon">&#128218;</span>
+        <input type="text" id="mainCourse" placeholder="Course (B.Tech, MBA...)" />
+      </div>
+      <button class="btn-main-search" id="btnMainSearch">
+        &#128269; Search
+      </button>
+    </div>
+
+    <div class="search-filters" id="courseFiltersWrap">
+      <span class="filter-label">Quick filters:</span>
+      <button class="filter-chip active" data-course="">All</button>
+    </div>
+  </div>
+</section>
+
+<section class="results-section" id="results-section">
+  <div class="results-inner">
+    <div class="results-header">
+      <div class="results-count" id="resultsCount">Loading colleges...</div>
+    </div>
+
+    <div class="colleges-grid" id="collegesGrid">
+      <div class="college-card" style="pointer-events:none;">
+        <div class="card-header" style="height:120px;">
+          <div class="skeleton" style="height:18px;width:60%;margin-bottom:10px;"></div>
+          <div class="skeleton" style="height:22px;width:85%;margin-bottom:8px;"></div>
+          <div class="skeleton" style="height:14px;width:40%;"></div>
+        </div>
+        <div class="card-body">
+          <div class="skeleton" style="height:14px;width:70%;margin-bottom:16px;"></div>
+          <div class="skeleton" style="height:14px;width:50%;margin-bottom:8px;"></div>
+          <div style="display:flex;gap:6px;margin-bottom:16px;">
+            <div class="skeleton" style="height:26px;width:70px;border-radius:6px;"></div>
+            <div class="skeleton" style="height:26px;width:80px;border-radius:6px;"></div>
+            <div class="skeleton" style="height:26px;width:60px;border-radius:6px;"></div>
+          </div>
+          <div class="skeleton" style="height:34px;border-radius:8px;"></div>
+        </div>
+      </div>
+
+      <div class="college-card" style="pointer-events:none;">
+        <div class="card-header" style="height:120px;">
+          <div class="skeleton" style="height:18px;width:55%;margin-bottom:10px;"></div>
+          <div class="skeleton" style="height:22px;width:80%;margin-bottom:8px;"></div>
+          <div class="skeleton" style="height:14px;width:45%;"></div>
+        </div>
+        <div class="card-body">
+          <div class="skeleton" style="height:14px;width:65%;margin-bottom:16px;"></div>
+          <div class="skeleton" style="height:14px;width:55%;margin-bottom:8px;"></div>
+          <div style="display:flex;gap:6px;margin-bottom:16px;">
+            <div class="skeleton" style="height:26px;width:75px;border-radius:6px;"></div>
+            <div class="skeleton" style="height:26px;width:65px;border-radius:6px;"></div>
+            <div class="skeleton" style="height:26px;width:80px;border-radius:6px;"></div>
+          </div>
+          <div class="skeleton" style="height:34px;border-radius:8px;"></div>
+        </div>
+      </div>
+    
+      <div class="college-card" style="pointer-events:none;">
+        <div class="card-header" style="height:120px;">
+          <div class="skeleton" style="height:18px;width:65%;margin-bottom:10px;"></div>
+          <div class="skeleton" style="height:22px;width:90%;margin-bottom:8px;"></div>
+          <div class="skeleton" style="height:14px;width:35%;"></div>
+        </div>
+        <div class="card-body">
+          <div class="skeleton" style="height:14px;width:75%;margin-bottom:16px;"></div>
+          <div class="skeleton" style="height:14px;width:45%;margin-bottom:8px;"></div>
+          <div style="display:flex;gap:6px;margin-bottom:16px;">
+            <div class="skeleton" style="height:26px;width:60px;border-radius:6px;"></div>
+            <div class="skeleton" style="height:26px;width:85px;border-radius:6px;"></div>
+            <div class="skeleton" style="height:26px;width:70px;border-radius:6px;"></div>
+          </div>
+          <div class="skeleton" style="height:34px;border-radius:8px;"></div>
+        </div>
+      </div>
+      
+      <div class="college-card" style="pointer-events:none;">
+        <div class="card-header" style="height:120px;">
+          <div class="skeleton" style="height:18px;width:58%;margin-bottom:10px;"></div>
+          <div class="skeleton" style="height:22px;width:82%;margin-bottom:8px;"></div>
+          <div class="skeleton" style="height:14px;width:42%;"></div>
+        </div>
+        <div class="card-body">
+          <div class="skeleton" style="height:14px;width:68%;margin-bottom:16px;"></div>
+          <div class="skeleton" style="height:14px;width:52%;margin-bottom:8px;"></div>
+          <div style="display:flex;gap:6px;margin-bottom:16px;">
+            <div class="skeleton" style="height:26px;width:72px;border-radius:6px;"></div>
+            <div class="skeleton" style="height:26px;width:62px;border-radius:6px;"></div>
+            <div class="skeleton" style="height:26px;width:78px;border-radius:6px;"></div>
+          </div>
+          <div class="skeleton" style="height:34px;border-radius:8px;"></div>
+        </div>
+      </div>
+      
+      <div class="college-card" style="pointer-events:none;">
+        <div class="card-header" style="height:120px;">
+          <div class="skeleton" style="height:18px;width:62%;margin-bottom:10px;"></div>
+          <div class="skeleton" style="height:22px;width:78%;margin-bottom:8px;"></div>
+          <div class="skeleton" style="height:14px;width:38%;"></div>
+        </div>
+        <div class="card-body">
+          <div class="skeleton" style="height:14px;width:72%;margin-bottom:16px;"></div>
+          <div class="skeleton" style="height:14px;width:48%;margin-bottom:8px;"></div>
+          <div style="display:flex;gap:6px;margin-bottom:16px;">
+            <div class="skeleton" style="height:26px;width:68px;border-radius:6px;"></div>
+            <div class="skeleton" style="height:26px;width:82px;border-radius:6px;"></div>
+            <div class="skeleton" style="height:26px;width:65px;border-radius:6px;"></div>
+          </div>
+          <div class="skeleton" style="height:34px;border-radius:8px;"></div>
+        </div>
+      </div>
+      
+      <div class="college-card" style="pointer-events:none;">
+        <div class="card-header" style="height:120px;">
+          <div class="skeleton" style="height:18px;width:70%;margin-bottom:10px;"></div>
+          <div class="skeleton" style="height:22px;width:88%;margin-bottom:8px;"></div>
+          <div class="skeleton" style="height:14px;width:44%;"></div>
+        </div>
+        <div class="card-body">
+          <div class="skeleton" style="height:14px;width:60%;margin-bottom:16px;"></div>
+          <div class="skeleton" style="height:14px;width:56%;margin-bottom:8px;"></div>
+          <div style="display:flex;gap:6px;margin-bottom:16px;">
+            <div class="skeleton" style="height:26px;width:76px;border-radius:6px;"></div>
+            <div class="skeleton" style="height:26px;width:58px;border-radius:6px;"></div>
+            <div class="skeleton" style="height:26px;width:72px;border-radius:6px;"></div>
+          </div>
+          <div class="skeleton" style="height:34px;border-radius:8px;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="pagination" id="pagination"></div>
+  </div>
+</section>
+
+<section class="states-section" id="states-section">
+  <div class="states-inner">
+    <div class="section-header">
+      <span class="section-tag">📍 Browse by State</span>
+      <h2 class="section-title">Explore India's States</h2>
+      <p class="section-desc">Click on any state to discover colleges in that region</p>
+    </div>
+    <div class="states-grid" id="statesGrid">
+    </div>
+  </div>
+</section>
+
+<section class="features-section" id="about-section">
+  <div class="features-inner">
+    <div class="section-header">
+      <span class="section-tag">✨ Why Use Our Platform</span>
+      <h2 class="section-title">Everything You Need</h2>
+      <p class="section-desc">A complete platform to research and compare colleges across India</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon blue">🔍</div>
+        <h3 class="feature-title">Powerful Search</h3>
+        <p class="feature-desc">Search by college name, city, state, affiliation, or specific courses. Find exactly what you're looking for with our advanced filters.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon orange">📚</div>
+        <h3 class="feature-title">Detailed Courses</h3>
+        <p class="feature-desc">View complete UG and PG course offerings for every college. Compare programmes across different institutions easily.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon gold">📞</div>
+        <h3 class="feature-title">Direct Contact</h3>
+        <p class="feature-desc">Access phone numbers, email addresses, and official websites for direct communication with college admissions offices.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon green">🗺️</div>
+        <h3 class="feature-title">All States Covered</h3>
+        <p class="feature-desc">Comprehensive coverage of colleges from all 28 states and 8 union territories of India, from metros to tier-3 cities.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-text">India College <span>Finder</span></div>
+        <p class="footer-desc">
+          Your one-stop platform to discover, explore, and compare colleges across all 28 states
+          and union territories of India. Find the right college for your future.
+        </p>
+        <div class="footer-badges">
+          <span class="footer-badge">&#127758; Pan-India</span>
+          <span class="footer-badge">&#127891; UG &amp; PG</span>
+          <span class="footer-badge">&#9989; Free to Use</span>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Explore</div>
+        <ul class="footer-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#search-section">Search Colleges</a></li>
+          <li><a href="#states-section">Browse by State</a></li>
+          <li><a href="#about-section">About Platform</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Top States</div>
+        <ul class="footer-links">
+          <li><a href="#" onclick="filterByState('Maharashtra')">Maharashtra</a></li>
+          <li><a href="#" onclick="filterByState('Delhi')">Delhi</a></li>
+          <li><a href="#" onclick="filterByState('Karnataka')">Karnataka</a></li>
+          <li><a href="#" onclick="filterByState('Tamil Nadu')">Tamil Nadu</a></li>
+          <li><a href="#" onclick="filterByState('Uttar Pradesh')">Uttar Pradesh</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Popular Courses</div>
+        <ul class="footer-links">
+          <li><a href="#" onclick="currentFilters.course='B.Tech';searchColleges(1)">B.Tech / Engineering</a></li>
+          <li><a href="#" onclick="currentFilters.course='MBBS';searchColleges(1)">MBBS / Medical</a></li>
+          <li><a href="#" onclick="currentFilters.course='MBA';searchColleges(1)">MBA / Management</a></li>
+          <li><a href="#" onclick="currentFilters.course='LLB';searchColleges(1)">Law / LLB</a></li>
+          <li><a href="#" onclick="currentFilters.course='BCA';searchColleges(1)">BCA / Computer Science</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        <span>&copy; 2026 India College Finder.</span>
+        <span class="footer-dot">&#183;</span>
+        <span>All rights reserved.</span>
+        <span class="footer-dot">&#183;</span>
+        <span>Built with dedication for students of India.</span>
+      </div>
+      <div class="footer-bottom-right">
+        Helping students find their dream college &mdash; across every state, every city.
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
